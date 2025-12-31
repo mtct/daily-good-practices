@@ -1,0 +1,134 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS Custom Properties for Theming */
+:root {
+    --bg-color: #fafafa;
+    --text-color: #1a1a1a;
+    --toggle-color: #1a1a1a;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --toggle-color: #fafafa;
+}
+
+/* Base Styles */
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 2rem;
+}
+
+/* Main Content */
+main {
+    max-width: 800px;
+    width: 100%;
+}
+
+#practice-container {
+    text-align: center;
+}
+
+#practice-text {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: transparent;
+    border: 1px solid var(--toggle-color);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease, border-color 0.3s ease;
+    z-index: 100;
+    opacity: 0.3;
+}
+
+#theme-toggle:hover {
+    opacity: 0.6;
+}
+
+#theme-toggle:active {
+    opacity: 0.8;
+}
+
+/* Theme Icon - Simple Circle */
+.theme-icon {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--toggle-color);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+[data-theme="dark"] .theme-icon {
+    transform: scale(0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 1.5rem;
+    }
+
+    #theme-toggle {
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 28px;
+        height: 28px;
+    }
+
+    .theme-icon {
+        width: 10px;
+        height: 10px;
+    }
+
+    #practice-text {
+        font-size: clamp(1.25rem, 5vw, 2rem);
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 1rem;
+    }
+
+    #theme-toggle {
+        top: 1rem;
+        right: 1rem;
+        width: 24px;
+        height: 24px;
+    }
+
+    .theme-icon {
+        width: 8px;
+        height: 8px;
+    }
+}
